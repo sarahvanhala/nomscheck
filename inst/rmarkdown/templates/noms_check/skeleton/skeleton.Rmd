@@ -1,0 +1,222 @@
+---
+title: "Checking NOMs data"
+author: ""
+date: "`r format(Sys.Date(), '%A, %B %e, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    theme: united
+params:
+  noms_data_path: ""
+  prior_assessments_path: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+# Comparing new data values to reference distributions
+
+The following plots show the new values of certain variables compared to reference distributions.
+
+```{r}
+library(nomscheck)
+library(readr)
+library(dplyr)
+library(DT)
+
+noms_data <- read_data(params$noms_data_path)
+
+if (file.exists(params$prior_assessments_path)) {
+  prior_assessments <- read_csv(params$prior_assessments_path, col_types = "cdd")
+}
+
+new_data <- noms_data %>%
+  anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no"))
+```
+
+## BPressure_s
+
+```{r}
+compare_dist(new_data, "BPressure_s")
+```
+
+## BPressure_d
+
+```{r}
+compare_dist(new_data, "BPressure_d")
+```
+
+## Weight
+
+```{r}
+compare_dist(new_data, "Weight")
+```
+
+## Height
+
+```{r}
+compare_dist(new_data, "Height")
+```
+
+## WaistCircum
+
+```{r}
+compare_dist(new_data, "WaistCircum")
+```
+
+## BreathCO
+
+```{r}
+compare_dist(new_data, "BreathCO")
+```
+
+## Plasma_Gluc
+
+```{r}
+compare_dist(new_data, "Plasma_Gluc")
+```
+
+## HgbA1c
+
+```{r}
+compare_dist(new_data, "HgbA1c")
+```
+
+## Lipid_TotChol
+
+```{r}
+compare_dist(new_data, "Lipid_TotChol")
+```
+
+## Lipid_HDL
+
+```{r}
+compare_dist(new_data, "Lipid_HDL")
+```
+
+## Lipid_Tri
+
+```{r}
+compare_dist(new_data, "Lipid_Tri")
+```
+
+## Table of new Lipid_Tri values
+
+The following is a table of the values of the variables shown in the plot above for the new observations.
+
+<br>
+
+```{r}
+new_data %>%
+  select(ConsumerID, Assessment, der_date, Lipid_Tri) %>%
+  datatable(rownames = FALSE, 
+            options = list(scrollX = TRUE))
+```
+
+<br>
+
+## Lipid_LDL
+
+```{r}
+compare_dist(new_data, "Lipid_LDL")
+```
+
+## Table of new values
+
+The following is a table of the values of the variables shown in the plots above for the new observations.
+
+<br>
+
+```{r}
+new_data %>%
+  select(ConsumerID, Assessment, der_date, BPressure_s, BPressure_d, Weight, Height,
+         WaistCircum, BreathCO, Plasma_Gluc, HgbA1c, Lipid_TotChol, Lipid_HDL, 
+         Lipid_Tri, Lipid_LDL) %>%
+  datatable(rownames = FALSE, 
+            options = list(scrollX = TRUE))
+```
+
+<br>
+
+# Comparing differences in values at current assessment to prior assessment
+
+```{r}
+diff_data <- noms_data %>%
+  calc_diffs %>%
+  anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no")) 
+```
+
+The following plots show the difference between new values of certain variables and the values of those variables at the prior assessment, compared to a simualated reference distribution.
+
+## Weight
+
+```{r}
+compare_diff(diff_data, "Weight")
+```
+
+## Height
+
+```{r}
+compare_diff(diff_data, "Height")
+```
+
+## WaistCircum
+
+```{r}
+compare_diff(diff_data, "WaistCircum")
+```
+
+
+## BPressure_s
+
+```{r}
+compare_diff(diff_data, "BPressure_s")
+```
+
+## BPressure_d
+
+```{r}
+compare_diff(diff_data, "BPressure_d")
+```
+
+## Weight / waist circumference ratio
+
+```{r}
+compare_diff(diff_data, "Weight_Waist")
+```
+
+## Table of current and prior values
+
+The following is a table of the current and prior values of the variables, as well as their difference, shown in the plots.
+
+<br>
+
+```{r}
+diff_data %>%
+  select(ConsumerID, Assessment, der_date,
+         der_weight, der_weight_previous, der_weight_diff,
+         der_height, der_height_previous, der_height_diff,
+         der_waistcircum, der_waistcircum_previous, der_waistcircum_diff,
+         der_bpressure_s, der_bpressure_s_previous, der_bpressure_s_diff,
+         der_bpressure_d, der_bpressure_d_previous, der_bpressure_d_diff,
+         der_weight_waist, der_weight_waist_previous, der_weight_waist_diff) %>%
+  datatable(rownames = FALSE, 
+            colnames = c("ConsumerID", "Assessment", "Date",
+                         "Weight", "Previous weight", "Weight difference",
+                         "Height", "Previous height", "Height difference",
+                         "WaistCircum", "Previous WaistCircum", "WaistCircum difference",
+                         "BPressure_s", "Previous BPressure_s", "BPressure_s difference",
+                         "BPressure_d", "Previous BPressure_d", "BPressure_d difference",
+                         "Weight/Waist ratio", "Previous Weight/Waist ratio", 
+                         "Weight/Waist ratio difference"),
+            options = list(scrollX = TRUE)) %>%
+  formatCurrency(c("der_weight_waist", "der_weight_waist_previous", "der_weight_waist_diff"), 
+                 currency = "", digits = 3)
+```
+
+<br>
+

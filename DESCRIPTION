@@ -1,0 +1,27 @@
+Package: nomscheck
+Type: Package
+Title: Report to Check NOMS Data
+Version: 0.1.0
+Authors@R: c(
+      person("Sarah", "Van Hala", email = "sarah.vanhala@gmail.com", role = c("aut", "cre"))
+    )
+Maintainer: Sarah Van Hala <sarah.vanhala@gmail.com>
+Description: Collection of functions and reports for checking NOMS data.
+License: What license is it under?
+Encoding: UTF-8
+Depends: 
+    R (>= 3.1.0)
+Imports: 
+    dplyr (>= 0.6.0),
+    readr,
+    purrr,
+    stringr,
+    lubridate,
+    ggplot2,
+    rmarkdown,
+    DT,
+    zoo
+Remotes:
+    tidyverse/dplyr
+LazyData: true
+RoxygenNote: 6.0.1
