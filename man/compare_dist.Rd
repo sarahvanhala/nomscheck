@@ -24,9 +24,9 @@ Histogram of simulated data with lines indicating client's actual H-data values.
 The purpose of this plot is to search for outliers/errors/typos in client-specific H-data values.
 }
 \details{
-Simulates a gamma distribution and comparing client-specific H-data variables to the simulated distribution.
+Simulates a gamma distribution and compares client-specific H-data values to the simulated distribution.
 
-If optional variables are not specified the function will use a reference value.
+If optional variables are not specified, the function will use a reference value.
 }
 \examples{
 compare_dist(newdata, var, mean, sd, binwidth)

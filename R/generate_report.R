@@ -1,4 +1,11 @@
-
+#' Generate Report
+#'
+#' @param noms_data_path Path to data created by read_noms_data.
+#' @param prior_assessments_path (optional) Path to the csv file of prior assessments.
+#' @param output_file Where you want the report to be saved.
+#' @return Report
+#' @examples
+#' generate_noms_report("Desktop/new_noms_data.xls", "Desktop/prior_assessments.csv", "Desktop/report.html")
 
 #' @export
 generate_noms_report <- function(noms_data_path, prior_assessments_path,

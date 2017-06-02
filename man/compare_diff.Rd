@@ -21,12 +21,12 @@ compare_diff(diffdata, var, zero_prob, mean, binwidth)
 Histogram of simulated differences with lines indicating actual differences in H-data.
 }
 \description{
-The purpose of this plot is to look for dramatic differences in the values of client-specific H-data values between the current and previous assessments. The plot may indicate outliers.
+The purpose of this plot is to look for dramatic differences (which may indicate outliers) in the values of client-specific H-data values between the current and previous assessments.
 }
 \details{
-Simulates a comparison distribution and compares client-specific differences in H-data between current and most previous assessment to the simulated distribution.
+Simulates a comparison distribution and compares client-specific differences in H-data values between current and most previous assessment to the simulated distribution.
 
-If optional variables are not specified the function will use a reference value.
+If optional variables are not specified, the function will use a reference value.
 }
 \examples{
 compare_diff(diffdata, var, zero_prob, mean, binwidth)

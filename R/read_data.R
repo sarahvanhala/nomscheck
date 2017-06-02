@@ -157,7 +157,7 @@ create_derived_fields <- function(data) {
 #'
 #' Read NOMs data extract and create derived fields
 #'
-#' @param path Path to the ExcelReport.xlsx file
+#' @param path Path to the ExcelReport.xls file
 #' @return Data frame with original data and derived fields
 #' @examples
 #' read_noms_data("/path/to/folder/ExcelReport.xls")
