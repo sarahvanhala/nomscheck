@@ -7,7 +7,7 @@ Authors@R: c(
     )
 Maintainer: Sarah Van Hala <sarah.vanhala@gmail.com>
 Description: Collection of functions and reports for checking NOMS data.
-License: What license is it under?
+License: GPL-3 | file LICENSE
 Encoding: UTF-8
 Depends: 
     R (>= 3.1.0)
