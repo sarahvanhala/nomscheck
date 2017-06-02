@@ -46,11 +46,11 @@ save_prior_assessments(noms_data, "/Desktop/prior_assessments.csv")
 
 1. Determine the following for each variable:
   
-  a. The probability that the variables will be zero
+      a. The probability that the variables will be zero
   
-  b. The mean of the distribution of the variable
+      b. The mean of the distribution of the variable
   
-  c. The standard deviatio of the distribution of the variable
+      c. The standard deviatio of the distribution of the variable
 
 2. You will have to go into the code that is generated after step 8. above. To do this ctrl+f for compare_diff and add the zero_prob, mean, and sd parameters for each variable as such:
 
