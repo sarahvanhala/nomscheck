@@ -28,14 +28,15 @@ library(readr)
 library(dplyr)
 library(DT)
 
-noms_data <- read_data(params$noms_data_path)
+noms_data <- read_noms_data(params$noms_data_path)
+new_data <- noms_data
 
 if (file.exists(params$prior_assessments_path)) {
   prior_assessments <- read_csv(params$prior_assessments_path, col_types = "cdd")
+  
+  new_data <- noms_data %>%
+    anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no"))
 }
-
-new_data <- noms_data %>%
-  anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no"))
 ```
 
 ## BPressure_s
@@ -271,9 +272,12 @@ new_data %>%
 # Comparing differences in values at current assessment to prior assessment
 
 ```{r}
-diff_data <- noms_data %>%
-  calc_diffs %>%
-  anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no")) 
+diff_data <- calc_diffs(noms_data)
+
+if (file.exists(params$prior_assessments_path)) {
+  diff_data <- diff_data %>%
+    anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no"))
+}
 ```
 
 The following plots show the difference between new values of certain variables and the values of those variables at the prior assessment, compared to a simualated reference distribution.

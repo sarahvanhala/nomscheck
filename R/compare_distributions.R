@@ -1,6 +1,22 @@
 #' @import ggplot2
 NULL
 
+#' Compare Distributions
+#'
+#' The purpose of this plot is to search for outliers/errors/typos in client-specific H-data values.
+#'
+#' Simulates a gamma distribution and compares client-specific H-data values to the simulated distribution.
+#'
+#' If optional variables are not specified, the function will use a reference value.
+#'
+#' @param newdata Dataframe downloaded from SPARS containing all assessments that you want to check. This will usually just include intakes.
+#' @param var H-data variable of interest
+#' @param mean (optional) mean of the distribution of the variable of interest
+#' @param sd (optional) standard deviation of the distribution of the variable of interest
+#' @param binwidth (optional) The binwidth of the plot
+#' @return Histogram of simulated data with lines indicating client's actual H-data values.
+#' @examples
+#' compare_dist(newdata, var, mean, sd, binwidth)
 #' @export
 compare_dist <- function(newdata, var, mean, sd, binwidth) {
   if (!(var %in% names(refdist))) {

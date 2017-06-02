@@ -160,9 +160,9 @@ create_derived_fields <- function(data) {
 #' @param path Path to the ExcelReport.xlsx file
 #' @return Data frame with original data and derived fields
 #' @examples
-#' read_data("/path/to/folder/ExcelReport.xls")
+#' read_noms_data("/path/to/folder/ExcelReport.xls")
 #' @export
-read_data <- function(path) {
+read_noms_data <- function(path) {
   read_raw_data(path) %>%
     create_derived_fields
 }

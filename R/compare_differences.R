@@ -1,4 +1,11 @@
-
+#' Calculate Differences
+#'
+#' Calculate differences in H-data between current and most previous assessment
+#'
+#' @param noms_data dataframe created by read_noms_data
+#' @return Dataframe with a column of differences
+#' @examples
+#' calc_diffs(noms_data)
 #' @export
 calc_diffs <- function(noms_data) {
   noms_data %>%
@@ -22,6 +29,22 @@ calc_diffs <- function(noms_data) {
            der_weight_waist_diff = der_weight_waist - der_weight_waist_previous)
 }
 
+#' Compare Differences
+#'
+#' The purpose of this plot is to look for dramatic differences (which may indicate outliers) in the values of client-specific H-data values between the current and previous assessments.
+#'
+#' Simulates a comparison distribution and compares client-specific differences in H-data values between current and most previous assessment to the simulated distribution.
+#'
+#' If optional variables are not specified, the function will use a reference value.
+#'
+#' @param diffdata dataframe created by calc_diffs
+#' @param var H-data variable of interest
+#' @param zero_prob (optional) The probability of the difference in the variable of interest being zero
+#' @param mean (optional) The mean of the absolute value of the non-zero part of the variable of interest. Note that for the waist circumference:weight ratio, the mean of the absolute value of the non-zero part is multiplied by 1,000
+#' @param binwidth (optional) The binwidth of the plot
+#' @return Histogram of simulated differences with lines indicating actual differences in H-data.
+#' @examples
+#' compare_diff(diffdata, var, zero_prob, mean, binwidth)
 #' @export
 compare_diff <- function(diffdata, var, zero_prob, mean, binwidth) {
   if (!(var %in% names(refdiff))) {
