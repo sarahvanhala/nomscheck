@@ -36,7 +36,7 @@ compare_dist <- function(newdata, var, mean, sd, binwidth) {
   simdata <- tibble(x = rgamma(1000, shape = alpha, scale = beta))
   ggplot() +
     theme_minimal() +
-    geom_histogram(data = simdata, aes(x = x), color = "grey35", fill = "grey35", binwidth = binwidth) +
+    geom_histogram(data = simdata, aes(x = x), color = "#bdbdbd", fill = "#bdbdbd", binwidth = binwidth) +
     geom_vline(xintercept = newdata[[paste0("der_", stringr::str_to_lower(var))]], color = "#083D55") +
     theme(axis.title = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank()) +
     ggtitle(paste("Distribution of new values of", var),
