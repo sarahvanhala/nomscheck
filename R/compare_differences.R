@@ -71,7 +71,7 @@ compare_diff <- function(diffdata, var, zero_prob, mean, binwidth) {
     theme_minimal() +
     geom_histogram(data = simdata, aes(x = x), color = "grey35", fill = "grey35", binwidth = binwidth) +
     geom_vline(xintercept = diffdata[[paste0("der_", stringr::str_to_lower(var), "_diff")]],
-               color = "red") +
+               color = "#083D55") +
     theme(axis.title = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank()) +
     ggtitle(paste("Difference in", var, "from prior assessment (for new values)"),
             subtitle = "Compared to reference distribution of differences")
