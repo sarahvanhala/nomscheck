@@ -117,7 +117,7 @@ create_derived_fields <- function(data) {
         is.na(der_bmi_risk) +
         is.na(der_breathco_risk) +
         is.na(der_waist_circum_risk),
-      der_blood_risk_count_na =
+      der_blood_risk_na_count =
         is.na(der_diabetes_risk) +
         is.na(der_lipid_hdl_risk) +
         is.na(der_lipid_ldl_risk) +
