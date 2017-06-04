@@ -28,7 +28,7 @@ noms_data <- read_noms_data("/Users/sarah/Desktop/SV Work/Evaluation Projects/Ge
 
 ```
 
-6a. The results of `read_noms_data` includes the following derived variables:
+The results of `read_noms_data` includes the following derived variables:
 
 - der_date: Combines discharge and assessments dates so you can filter the data by a particular date
 - der_intake_seq_no: Intake sequence number (1, 2, 3, ...)
