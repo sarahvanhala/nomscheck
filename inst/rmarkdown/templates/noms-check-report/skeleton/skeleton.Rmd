@@ -37,6 +37,9 @@ if (file.exists(params$prior_assessments_path)) {
   new_data <- noms_data %>%
     anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no"))
 }
+
+new_data <- new_data %>%
+  filter(Assessment != 699)
 ```
 
 ## BPressure_s
@@ -278,6 +281,9 @@ if (file.exists(params$prior_assessments_path)) {
   diff_data <- diff_data %>%
     anti_join(prior_assessments, by = c("ConsumerID", "Assessment", "der_intake_seq_no"))
 }
+
+diff_data <- diff_data %>%
+  filter(Assessment != 699)
 ```
 
 The following plots show the difference between new values of certain variables and the values of those variables at the prior assessment, compared to a simualated reference distribution.
