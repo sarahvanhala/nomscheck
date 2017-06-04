@@ -43,16 +43,24 @@ save_prior_assessments(noms_data, "/Desktop/prior_assessments.csv")
 12. Click Knit to create the report.
 
 # Instructions on how to change the comparison distributions 
-
-1. Determine the following for each variable:
   
-      a. The probability that the variables will be zero
+## For the variable plots:
+      
+      1. Determine the mean of the distribution
+      
+      2. Determine the standard deviation of the distribution
+      
+      3. Go into the code that is generated after Step 8 above. Type ctrl+f for `compare_dist` and change the mean and standard deviation parameters
+         
+ ## For the difference plots:
   
-      b. The mean of the distribution of the variable
-  
-      c. The standard deviatio of the distribution of the variable
-
-2. You will have to go into the code that is generated after step 8. above. To do this ctrl+f for compare_diff and add the zero_prob, mean, and sd parameters for each variable as such:
+      1. The probability that the difference between assessments is zero
+      
+      2. The mean of the absolute value of the non-zero differences
+      
+      3. Go into the code that is generated after Step 8 above. Type ctrl+f for `compare_diff` and change the zero_prob and the mean parameters. 
+ 
+## Example
 
 ```
 compare_diff(diff_data, "Weight", zero_prob = .3, mean = 10)
