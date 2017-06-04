@@ -54,11 +54,11 @@ save_prior_assessments(noms_data, "/Desktop/prior_assessments.csv")
          
  ## For the difference plots:
   
-      1. The probability that the difference between assessments is zero
+1. The probability that the difference between assessments is zero
       
-      2. The mean of the absolute value of the non-zero differences
+2. The mean of the absolute value of the non-zero differences
       
-      3. Go into the code that is generated after Step 8 above. Type ctrl+f for `compare_diff` and change the zero_prob and the mean parameters. 
+3. Go into the code that is generated after Step 8 above. Type ctrl+f for `compare_diff` and change the zero_prob and the mean parameters. 
  
 ## Example
 
