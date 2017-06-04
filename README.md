@@ -20,7 +20,7 @@ devtools::install_github("sarahvanhala/nomscheck")
 library(nomscheck)
 ```
 
-6. Read in a previous SPARS download using noms_data.
+6. Read in a previous SPARS download using `read_noms_data`.
 
 ```
 noms_data <- read_noms_data("/Desktop/ExcelReport old.xls")
