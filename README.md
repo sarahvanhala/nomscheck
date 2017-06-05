@@ -46,7 +46,7 @@ The results of `read_noms_data` includes the following derived variables:
 - der_hisp_at_all: Client identifies as Hispanic
 - der_lgbt: Client identifies as LGBT
 - der_women_only: Client solely identifies as a woman
-- der_men_only: CLient solely identifies as a man
+- der_men_only: Client solely identifies as a man
 - der_age_55_p_only: Client is 55+ years old
 - der_violence_trauma_only: Client has experienced violence
 
