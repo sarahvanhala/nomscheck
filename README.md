@@ -1,7 +1,6 @@
 # nomscheck: Check NOMs H-data 
 
 Installation and Implementation Instructions
-* Note that the code that you need to run in the console is in the Run Me file
 
 1. Download [R](https://www.r-project.org/)
 2. Download the free version of [R-Studio](https://www.rstudio.com/products/rstudio/download2/)
@@ -102,3 +101,5 @@ save_prior_assessments(noms_data, "/Desktop/prior_assessments.csv")
 compare_diff(diff_data, "Weight", zero_prob = .3, mean = 10)
 compare_dist(new_data, "BPressure_s", mean = 90, sd = 15)
 ```
+
+## Note that the code that you need to run in the console is in the Run Me file
