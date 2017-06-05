@@ -50,7 +50,7 @@ The results of `read_noms_data` includes the following derived variables:
 - der_age_55_p_only: Client is 55+ years old
 - der_violence_trauma_only: Client has experienced violence
 
-You can save the results of `read_noms_data` using the follwing code:
+You can save the results of `read_noms_data` using the following code:
 
 ```
 library(readr)
