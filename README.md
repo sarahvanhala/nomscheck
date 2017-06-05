@@ -36,7 +36,7 @@ The results of `read_noms_data` includes the following derived variables:
 - der_age: Rough client age calculated from birth month and year
 - der_variable_risk: Risk variables as defined in the RFA (HgbA1c and plasma glucose are combined to define diabetes risk)
 - der_weight_lbs: Weight in lbs.
-- der_height_ft: Height in inches
+- der_height_ft: Height in feet
 - der_mechanical_risk_count: The number of mechanical indicators that the client is at risk for
 - der_blood_risk_count: The number of blood indicators that the client is at risk for 
 - der_mechanical_risk_na_count: The number of mechanical risk indicators that the client has an NA value for
